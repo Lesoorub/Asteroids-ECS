@@ -1,2 +1,4 @@
 # Asteroids-ECS
-![](https://raw.githubusercontent.com/Lesoorub/Asteroids-ECS/main/images/CallsList.svg)
+![](./images/CallsList.svg)
+![](./images/Relations.svg)
+![](./images/Extentions.svg)
