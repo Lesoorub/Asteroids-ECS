@@ -1,0 +1,6 @@
+C:\Users\Lesoorub\Asteroids\AsteroidsEngine\SimpleLogger\bin\Debug\SimpleLogger.dll
+C:\Users\Lesoorub\Asteroids\AsteroidsEngine\SimpleLogger\bin\Debug\SimpleLogger.pdb
+C:\Users\Lesoorub\Asteroids\AsteroidsEngine\SimpleLogger\obj\Debug\SimpleLogger.csproj.AssemblyReference.cache
+C:\Users\Lesoorub\Asteroids\AsteroidsEngine\SimpleLogger\obj\Debug\SimpleLogger.csproj.CoreCompileInputs.cache
+C:\Users\Lesoorub\Asteroids\AsteroidsEngine\SimpleLogger\obj\Debug\SimpleLogger.dll
+C:\Users\Lesoorub\Asteroids\AsteroidsEngine\SimpleLogger\obj\Debug\SimpleLogger.pdb

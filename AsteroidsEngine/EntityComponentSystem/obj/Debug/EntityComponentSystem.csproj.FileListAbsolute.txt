@@ -1,0 +1,6 @@
+C:\Users\Lesoorub\Asteroids\AsteroidsEngine\EntityComponentSystem\bin\Debug\EntityComponentSystem.dll
+C:\Users\Lesoorub\Asteroids\AsteroidsEngine\EntityComponentSystem\bin\Debug\EntityComponentSystem.pdb
+C:\Users\Lesoorub\Asteroids\AsteroidsEngine\EntityComponentSystem\obj\Debug\EntityComponentSystem.csproj.AssemblyReference.cache
+C:\Users\Lesoorub\Asteroids\AsteroidsEngine\EntityComponentSystem\obj\Debug\EntityComponentSystem.csproj.CoreCompileInputs.cache
+C:\Users\Lesoorub\Asteroids\AsteroidsEngine\EntityComponentSystem\obj\Debug\EntityComponentSystem.dll
+C:\Users\Lesoorub\Asteroids\AsteroidsEngine\EntityComponentSystem\obj\Debug\EntityComponentSystem.pdb
