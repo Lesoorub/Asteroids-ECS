@@ -60,7 +60,7 @@ public class FightWithAsteroidsModel : MonoBehaviour
 
             LaserWidth = 0.05f,
 
-            UFOSpawnChance = 0.05f,
+            UFOSpawnChance = 0.15f,
             Borders = new AsteroidsGameSettings.Border()
             {
                 Left = -halfScreenInWorldPoint.x - offset,

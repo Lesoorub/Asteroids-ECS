@@ -23,8 +23,11 @@ public class InfoController : MonoBehaviour
     {
         view.SetLives(count);
     }
-    public void SetPlayerInfo(float x, float y, float speedX, float speedY)
+    public void SetPlayerInfo(
+        float x, float y,
+        float speedX, float speedY,
+        float PlayerAngle, float LaserReloadTime)
     {
-        view.SetPlayerInfo(x, y, speedX, speedY);
+        view.SetPlayerInfo(x, y, speedX, speedY, PlayerAngle, LaserReloadTime);
     }
 }

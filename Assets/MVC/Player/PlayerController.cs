@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     {
         if (player == null) return;
         view.SetPlayerTransform(player.X, player.Y, player.Rotation);
-        view.SetPlayerInfo(player.X, player.Y, player.SpeedX, player.SpeedY);
+        view.SetPlayerInfo(player.X, player.Y, player.SpeedX, player.SpeedY, player.Rotation, player.LaserChargeReload);
         view.SetLaserReload(player.LaserChargeReload, settings.LaserChargeReloadTime);
         view.SetIsInvincibility(player.IsInvincibility);
         view.SetLaserState(player.LaserIsShooting);

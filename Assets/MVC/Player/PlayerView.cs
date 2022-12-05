@@ -63,9 +63,12 @@ public class PlayerView : MonoBehaviour
         InfoController.SetLaserReload(_chargeReloadTimeLerp, maxReloadTime);
     }
 
-    public void SetPlayerInfo(float x, float y, float speedX, float speedY)
+    public void SetPlayerInfo(
+        float x, float y,
+        float speedX, float speedY,
+        float PlayerAngle, float LaserReloadTime)
     {
-        InfoController.SetPlayerInfo(x, y, speedX, speedY);
+        InfoController.SetPlayerInfo(x, y, speedX, speedY, PlayerAngle, LaserReloadTime);
     }
     public void SetIsInvincibility(bool isInvincibility)
     {
