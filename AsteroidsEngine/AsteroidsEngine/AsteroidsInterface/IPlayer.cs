@@ -30,7 +30,7 @@ namespace AsteroidsEngine
         /// <summary>
         /// Время, в секундах, до завершения перезарядки лазера
         /// </summary>
-        float LaserReaload { get; }
+        float LaserChargeReload { get; }
         /// <summary>
         /// Является ли игрок неуязвимым
         /// </summary>
@@ -39,7 +39,10 @@ namespace AsteroidsEngine
         /// Событие уменьшения жизней у игрока
         /// </summary>
         event LiveConsumed OnLiveConsumed;
-
+        /// <summary>
+        /// Событие изменения количества зарядов лазера
+        /// </summary>
+        event LaserChargesChangedArgs OnLaserChargesChanged;
         /// <summary>
         /// Добавить мгновенную скорость игроку
         /// </summary>

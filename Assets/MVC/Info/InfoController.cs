@@ -9,13 +9,11 @@ public class InfoController : MonoBehaviour
 
     public void SetScore(int score)
     {
-        model.Score = score;
-        view.SetScore(model.Score);
+        view.SetScore(score);
     }
     public void SetLaserCharges(int laserCharges)
     {
-        model.LaserCharges = laserCharges;
-        view.SetScore(model.LaserCharges);
+        view.SetLaserCharges(laserCharges);
     }
     public void SetLaserReload(float reloadTime, float maxReloadTime)
     {
@@ -24,5 +22,9 @@ public class InfoController : MonoBehaviour
     public void SetLives(int count)
     {
         view.SetLives(count);
+    }
+    public void SetPlayerInfo(float x, float y, float speedX, float speedY)
+    {
+        view.SetPlayerInfo(x, y, speedX, speedY);
     }
 }

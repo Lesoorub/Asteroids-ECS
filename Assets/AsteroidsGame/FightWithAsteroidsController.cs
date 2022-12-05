@@ -24,10 +24,6 @@ public class FightWithAsteroidsController : MonoBehaviour
 
     private void Update()
     {
-        view.UpdatePlayerPosition(model.Player);
-        view.UpdateLaserCharges(model.Player.LaserCharges);
-        view.UpdateLaserReload(model.Player.LaserReaload, model.Settings.LaserChargeReloadTime);
-
         foreach (IBullet bullet in model.Bullets)
             view.UpdateBullet(bullet);
         foreach (IAsteroid asteroid in model.Asteroids)
@@ -43,15 +39,11 @@ public class FightWithAsteroidsController : MonoBehaviour
 
     private void Scene_OnGameStart()
     {
+        view.PlayerSpawn(model.Player, model.Settings);
         view.ResetView();
-        view.SetLives(model.Player.Lives);
         view.SetScore(model.Score);
 
         view.OnStartGame?.Invoke();
-
-        //new
-        view.SetPlayer(model.Player);
-        //
 
         model.Bullets.OnAdded += Bullets_OnAdded;
         model.Bullets.OnRemoved += Bullets_OnRemoved;
@@ -63,18 +55,11 @@ public class FightWithAsteroidsController : MonoBehaviour
         model.UFOs.OnRemoved += UFOs_OnRemoved;
 
         model.OnScoreUpdate += Model_OnScoreUpdate;
-
-        model.Player.OnLiveConsumed += Player_OnLiveConsumed;
-    }
-
-    private void Player_OnLiveConsumed(int newLives)
-    {
-        view.SetLives(newLives);
     }
 
     private void Scene_OnGameEnd()
     {
-        view.DestroyPlayer();
+        view.PlayerDie();
         view.OnEndGame?.Invoke();
 
         model.Bullets.OnAdded -= Bullets_OnAdded;
@@ -87,8 +72,6 @@ public class FightWithAsteroidsController : MonoBehaviour
         model.UFOs.OnRemoved -= UFOs_OnRemoved;
 
         model.OnScoreUpdate -= Model_OnScoreUpdate;
-
-        model.Player.OnLiveConsumed -= Player_OnLiveConsumed;
     }
 
     private void UFOs_OnRemoved(IUFO obj)

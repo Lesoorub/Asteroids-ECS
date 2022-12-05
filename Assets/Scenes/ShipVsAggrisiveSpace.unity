@@ -155,7 +155,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1595091940}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -524,7 +524,7 @@ RectTransform:
   - {fileID: 1417151076}
   - {fileID: 738739410}
   m_Father: {fileID: 1595091940}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
@@ -724,7 +724,7 @@ RectTransform:
   - {fileID: 1084914526}
   - {fileID: 1889707930}
   m_Father: {fileID: 1595091940}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -1216,7 +1216,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1595091940}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1496,6 +1496,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 1994747264}
   Laser: {fileID: 48314282}
+  DestroyEffect: {fileID: 1276251676}
   InfoController: {fileID: 732024989}
 --- !u!114 &840845517
 MonoBehaviour:
@@ -1523,16 +1524,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ef0dc2be4629c54ab5341bccf2007d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  X: 0
-  Y: 0
-  SpeedX: 0
-  SpeedY: 0
-  Rotation: 0
-  IsInvincibility: 0
-  IsLaserActive: 0
-  Lives: 0
-  LaserCharges: 0
-  LaserReload: 0
 --- !u!4 &840845519
 Transform:
   m_ObjectHideFlags: 0
@@ -1738,7 +1729,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!199 &1276251675
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -6936,11 +6927,11 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 732024987}
   - {fileID: 39361456}
   - {fileID: 2055500147}
   - {fileID: 263642209}
   - {fileID: 448154203}
-  - {fileID: 732024987}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7009,13 +7000,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 451ffb071aa74ba4ab45eae6a7f81a1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InfoScore: {fileID: 39361457}
   EndGameScore: {fileID: 466161530}
-  ShipInfo: {fileID: 2055500150}
-  LaserCharges: {fileID: 1417151079}
-  LaserReload: {fileID: 738739411}
-  DestroyEffect: {fileID: 1276251676}
-  Player: {fileID: 1994747264}
   OnEndGame:
     m_PersistentCalls:
       m_Calls:
@@ -7046,8 +7031,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  LivesController: {fileID: 448154206}
-  playerController: {fileID: 0}
+  playerController: {fileID: 840845517}
+  InfoController: {fileID: 732024989}
   BulletPrefab: {fileID: 7981589301375182628, guid: c55f54b3c4c4d5b41a6748fb3c2bf470, type: 3}
   UfoPrefab: {fileID: 159713749920909659, guid: fb8b574ced51b0347a8c72c3893ec516, type: 3}
   AsteroidPrefab: {fileID: 619485372431855251, guid: 1926d64ee81f22c4188fe5f130124b55, type: 3}
@@ -7545,7 +7530,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1595091940}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}

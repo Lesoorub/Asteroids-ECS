@@ -30,4 +30,13 @@ public class InfoView : MonoBehaviour
     {
         LaserReload.value = reloadTime / maxReloadTime;
     }
+    public void SetPlayerInfo(float x, float y, float speedX, float speedY)
+    {
+        ShipInfo.SetArguments(
+            ("shipX", x.ToString("N2")),
+            ("shipY", y.ToString("N2")),
+            ("speedX", speedX.ToString("N2")),
+            ("speedY", speedY.ToString("N2"))
+            );
+    }
 }

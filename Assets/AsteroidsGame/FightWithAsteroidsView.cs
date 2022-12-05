@@ -8,17 +8,11 @@ using AsteroidsEngine;
 public class FightWithAsteroidsView : MonoBehaviour
 {
     [Header("Instances")]
-    public TMP_TextArgumentExtention InfoScore;
     public TMP_TextArgumentExtention EndGameScore;
-    public TMP_TextArgumentExtention ShipInfo;
-    public TMP_TextArgumentExtention LaserCharges;
-    public SliderRaid LaserReload;
-    public ParticleSystem DestroyEffect;
-    public GameObject Player;
     public UnityEvent OnEndGame;
     public UnityEvent OnStartGame;
-    public LivesController LivesController;
     public PlayerController playerController;
+    public InfoController InfoController;
 
     [Header("Prefabs")]
     public GameObject BulletPrefab;
@@ -28,82 +22,29 @@ public class FightWithAsteroidsView : MonoBehaviour
     Dictionary<IBullet, GameObject> Bullets = new Dictionary<IBullet, GameObject>();
     Dictionary<IUFO, GameObject> UFOs = new Dictionary<IUFO, GameObject>();
 
-    //new
-
-    public void SetPlayer(IPlayer player)
+    public void SetScore(int score)
     {
-        playerController.SetPlayer(player);
+        InfoController.SetScore(score);
+        EndGameScore.SetArguments(("Score", score));
     }
-
-    //old
-    public void DestroyPlayer()
+    public void PlayerSpawn(IPlayer player, AsteroidsGameSettings Settings)
     {
-        Player.SetActive(false);
-        StartCoroutine(PlayDieEffect(Player.transform.position));
+        playerController.PlayerSpawn(player, Settings);
     }
-
-    IEnumerator PlayDieEffect(Vector2 position)
+    public void PlayerDie()
     {
-        DestroyEffect.transform.position = position;
-        DestroyEffect.gameObject.SetActive(true);
-        DestroyEffect.Play();
-        yield return new WaitForSeconds(1);
-        DestroyEffect.gameObject.SetActive(false);
-        DestroyEffect.Stop();
-        yield break;
+        playerController.PlayerDie();
     }
 
     public void ResetView()
     {
-        DestroyEffect.Stop();
-        DestroyEffect.gameObject.SetActive(false);
-
         foreach (var pair in Asteroids)
             Destroy(pair.Value);
         foreach (var pair in Bullets)
             Destroy(pair.Value);
         foreach (var pair in UFOs)
             Destroy(pair.Value);
-
-        Player.SetActive(true);
     }
-
-    public void SetScore(int score)
-    {
-        InfoScore.SetArguments(("Score", score));
-        EndGameScore.SetArguments(("Score", score));
-    }
-    public void UpdateLaserCharges(int laserCharges)
-    {
-        LaserCharges.SetArguments(("laserCharges", laserCharges));
-    }
-    public void UpdateLaserReload(float reloadTime, float maxReloadTime)
-    {
-        LaserReload.value = reloadTime / maxReloadTime;
-    }
-
-    public void UpdatePlayerInfo(float x, float y, float speedX, float speedY)
-    {
-        ShipInfo.SetArguments(
-            ("shipX", x.ToString("N2")),
-            ("shipY", y.ToString("N2")),
-            ("speedX", speedX.ToString("N2")),
-            ("speedY", speedY.ToString("N2"))
-            );
-    }
-    public void UpdatePlayerPosition(IPlayer player)
-    {
-        if (Player == null) return;
-
-        if (player != null)
-        {
-            Player.transform.position = new Vector3(player.X, player.Y, 0);
-            Player.transform.rotation = Quaternion.AngleAxis(player.Rotation, Vector3.forward);
-
-            UpdatePlayerInfo(player.X, player.Y, player.SpeedX, player.SpeedY);
-        }
-    }
-
 
     public void SpawnBullet(IBullet bullet)
     {
@@ -206,10 +147,5 @@ public class FightWithAsteroidsView : MonoBehaviour
             Destroy(ufoObj);
             UFOs.Remove(ufo);
         }
-    }
-
-    public void SetLives(int count)
-    {
-        LivesController.SetLives(count);
     }
 }

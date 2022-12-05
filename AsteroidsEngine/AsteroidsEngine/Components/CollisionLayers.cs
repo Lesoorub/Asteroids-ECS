@@ -1,4 +1,4 @@
-﻿namespace AsteroidsEngine
+﻿namespace AsteroidsEngine.Components
 {
     /// <summary>
     /// Слои коллизии

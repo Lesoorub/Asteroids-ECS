@@ -5,11 +5,18 @@ using UnityEngine;
 public class PlayerView : MonoBehaviour
 {
     [Header("Instances")]
-    public GameObject Player;
-    public GameObject Laser;
+    [SerializeField]
+    GameObject Player;
+    [SerializeField]
+    GameObject Laser;
+    [SerializeField]
+    ParticleSystem DestroyEffect;
 
-    public InfoController InfoController;
-    
+    [SerializeField]
+    InfoController InfoController;
+
+    float _chargeReloadTimeLerp;
+
     public void SetLives(int count)
     {
         InfoController.SetLives(count);
@@ -18,5 +25,42 @@ public class PlayerView : MonoBehaviour
     {
         Player.transform.position = new Vector3(X, Y, 0);
         Player.transform.rotation = Quaternion.AngleAxis(Rotation, Vector3.forward);
+    }
+    public void SpawnPlayer()
+    {
+        Player.SetActive(true);
+
+    }
+    public void PlayerDie()
+    {
+        Player.SetActive(false);
+        StartCoroutine(PlayDieEffect(Player.transform.position));
+    }
+    IEnumerator PlayDieEffect(Vector2 position)
+    {
+        DestroyEffect.transform.position = position;
+        DestroyEffect.gameObject.SetActive(true);
+        DestroyEffect.Play();
+        yield return new WaitForSeconds(1);
+        DestroyEffect.gameObject.SetActive(false);
+        DestroyEffect.Stop();
+        yield break;
+    }
+
+    public void SetLaserCharges(int laserCharges)
+    {
+        InfoController.SetLaserCharges(laserCharges);
+    }
+    public void SetLaserReload(float reloadTime, float maxReloadTime)
+    {
+        if (_chargeReloadTimeLerp < reloadTime)
+            _chargeReloadTimeLerp = reloadTime;
+        _chargeReloadTimeLerp = Mathf.Lerp(_chargeReloadTimeLerp, reloadTime, Time.deltaTime);
+        InfoController.SetLaserReload(_chargeReloadTimeLerp, maxReloadTime);
+    }
+
+    public void SetPlayerInfo(float x, float y, float speedX, float speedY)
+    {
+        InfoController.SetPlayerInfo(x, y, speedX, speedY);
     }
 }

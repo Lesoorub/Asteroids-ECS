@@ -18,11 +18,14 @@ namespace AsteroidsEngine.Components
         public float Drag { get => speed.Drag; set => speed.Drag = value; }
         public int LaserCharges { get; private set; }
         public bool LaserIsShooting { get; private set; }
-        public float LaserReaload => Math.Min(timeWhenLaserCharge - time.ElapsedTimeSinceTheStartOfTheScene, 0);
+        public float LaserChargeReload => Math.Max(timeWhenLaserCharge - time.ElapsedTimeSinceTheStartOfTheScene, 0);
         public bool IsInvincibility => time.ElapsedTimeSinceTheStartOfTheScene < invincibilityEndTime;
 
         public delegate void LiveConsumed(int newLives);
         public event LiveConsumed OnLiveConsumed;
+
+        public delegate void LaserChargesChangedArgs(int newLaserChargesCount);
+        public event LaserChargesChangedArgs OnLaserChargesChanged;
 
         //Хэшированные компоненты
         Position position;
@@ -74,6 +77,7 @@ namespace AsteroidsEngine.Components
             {
                 LaserCharges++;
                 timeWhenLaserCharge = time.ElapsedTimeSinceTheStartOfTheScene + settings.LaserChargeReloadTime;
+                OnLaserChargesChanged?.Invoke(LaserCharges);
             }
             if (LaserIsShooting)
             {
@@ -159,6 +163,7 @@ namespace AsteroidsEngine.Components
             LaserCharges--;
             laserShootEndTime = time.ElapsedTimeSinceTheStartOfTheScene + settings.LaserShootDuration;
             LaserIsShooting = true;
+            OnLaserChargesChanged?.Invoke(LaserCharges);
         }
 
         //Статические методы
