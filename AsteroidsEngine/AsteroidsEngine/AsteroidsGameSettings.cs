@@ -39,6 +39,14 @@
         /// </summary>
         public float LaserChargeReloadTime = 10;
         /// <summary>
+        /// Ширина лазера
+        /// </summary>
+        public float LaserWidth = 0.25f;
+        /// <summary>
+        /// Длина лазера
+        /// </summary>
+        public float LaserDistance = 3f;
+        /// <summary>
         /// Максимальное количество жизней игрока
         /// </summary>
         public int MaxPlayerHealth = 3;

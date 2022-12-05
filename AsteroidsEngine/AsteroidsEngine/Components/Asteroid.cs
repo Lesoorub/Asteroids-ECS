@@ -43,8 +43,7 @@ namespace AsteroidsEngine.Components
             speed.SpeedX = dirX * magnitude;
             speed.SpeedY = dirY * magnitude;
         }
-
-        private void Collider_OnCollision(CircleCollider anotherCollider)
+        public override void OnDestroyed()
         {
             var scene = this.scene as AsteroidsGameScene;
             switch (Size)
@@ -57,9 +56,13 @@ namespace AsteroidsEngine.Components
                     scene.AddScore(settings.AddScoreByDestroySmallAsteroid);
                     break;
             }
-            Destroy();
         }
 
+        private void Collider_OnCollision(CircleCollider anotherCollider)
+        {
+            Destroy();
+        }
+        
         public override void Tick()
         {
             settings.Borders.CorrectPosition(ref position.X, ref position.Y);

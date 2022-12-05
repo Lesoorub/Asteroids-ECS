@@ -7,7 +7,7 @@ namespace AsteroidsEngine.Components
     /// <summary>
     /// Круглый коллайдер (триггер)
     /// </summary>
-    public class CircleCollider : Component
+    public class CircleCollider : Component, IHasPosition
     {
         /// <summary>
         /// Радиус
@@ -17,8 +17,12 @@ namespace AsteroidsEngine.Components
         /// Слой
         /// </summary>
         public CollisionLayers Layer = CollisionLayers.Default;
+        public float X => position.X;
+        public float Y => position.Y;
+
         Position position;
         CircleColliderProvider provider;
+
 
         public delegate void CollidedArgs(CircleCollider anotherCollider);
         /// <summary>
@@ -80,18 +84,7 @@ namespace AsteroidsEngine.Components
             if (a == null || b == null) return false;
 
             float minDistanceSqr = (a.Radius + b.Radius) * (a.Radius + b.Radius);
-            return distanceSqr(a.position.X, a.position.Y, b.position.X, b.position.Y) <= minDistanceSqr;
+            return VectorHelper.DistanceSqr(a.position.X, a.position.Y, b.position.X, b.position.Y) <= minDistanceSqr;
         }
-
-        /// <summary>
-        /// Рассчет евклидового расстояния между позициями двух объектов
-        /// </summary>
-        /// <param name="x1">Позиция первого объекта по оси X</param>
-        /// <param name="y1">Позиция первого объекта по оси Y</param>
-        /// <param name="x2">Позиция второго объекта по оси X</param>
-        /// <param name="y2">Позиция второго объекта по оси Y</param>
-        /// <returns>Расстояние между объектами</returns>
-        float distanceSqr(float x1, float y1, float x2, float y2) =>
-            (x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1);
     }
 }

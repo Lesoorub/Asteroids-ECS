@@ -10,7 +10,7 @@ public class PlayerView : MonoBehaviour
     [SerializeField]
     LineRenderer PlayerVisualizer;
     [SerializeField]
-    GameObject Laser;
+    LineRenderer Laser;
     [SerializeField]
     ParticleSystem DestroyEffect;
 
@@ -58,6 +58,7 @@ public class PlayerView : MonoBehaviour
     {
         if (_chargeReloadTimeLerp < reloadTime)
             _chargeReloadTimeLerp = reloadTime;
+        //Было применено сглаживание, для улучшения отображения при малок количестве тиков игры
         _chargeReloadTimeLerp = Mathf.Lerp(_chargeReloadTimeLerp, reloadTime, Time.deltaTime);
         InfoController.SetLaserReload(_chargeReloadTimeLerp, maxReloadTime);
     }
@@ -71,11 +72,24 @@ public class PlayerView : MonoBehaviour
         if (isInvincibility)
         {
             float IsInvincibilityFrenqTime = 1f / IsInvincibilityFrenq;
-            PlayerVisualizer.enabled = Time.time % IsInvincibilityFrenqTime > (IsInvincibilityFrenqTime / 2);
+            var target = Time.time % IsInvincibilityFrenqTime > (IsInvincibilityFrenqTime / 2);
+            if (PlayerVisualizer.enabled != target)
+                PlayerVisualizer.enabled = target;
         }
         else if (!PlayerVisualizer.enabled)
         {
             PlayerVisualizer.enabled = true;
         }
+    }
+    public void SetLaserState(bool isActive)
+    {
+        if (Laser.gameObject.activeSelf != isActive)
+            Laser.gameObject.SetActive(isActive);
+    }
+    public void SetLaserSize(float shootPointX, float shootPointY, float width, float distance)
+    {
+        Laser.transform.localPosition = new Vector3(shootPointX, shootPointY, 0);
+        Laser.startWidth = Laser.endWidth = width;
+        Laser.SetPosition(1, new Vector3(distance, 0));
     }
 }

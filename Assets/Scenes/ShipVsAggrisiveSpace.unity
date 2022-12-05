@@ -298,7 +298,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 48314282}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.8, y: 0, z: 0}
+  m_LocalPosition: {x: 0.25, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -348,10 +348,10 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 0, y: 0, z: 0}
-  - {x: 10, y: 0, z: 0}
+  - {x: 3, y: 0, z: 0}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.1
+    widthMultiplier: 0.05
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -1621,7 +1621,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 1994747264}
   PlayerVisualizer: {fileID: 699847644}
-  Laser: {fileID: 48314282}
+  Laser: {fileID: 48314284}
   DestroyEffect: {fileID: 1276251676}
   InfoController: {fileID: 732024989}
   IsInvincibilityFrenq: 4

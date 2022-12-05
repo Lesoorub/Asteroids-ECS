@@ -1,5 +1,5 @@
 ﻿using EntityComponentSystem;
-using System;
+using System.Net.Http.Headers;
 
 namespace AsteroidsEngine.Components
 {
@@ -56,9 +56,7 @@ namespace AsteroidsEngine.Components
                 {
                     var positionComponent = gameObject.GetComponent<Position>();
 
-                    float angleInRadians = (rotation / 360f) * (float)Math.PI * 2;
-                    float dirX = (float)Math.Cos(angleInRadians);
-                    float dirY = (float)Math.Sin(angleInRadians);
+                    var (dirX, dirY) = AngleHelper.DegreesToDirection(rotation);
 
                     positionComponent.X = x + distanceFromPlayer * dirX;
                     positionComponent.Y = y + distanceFromPlayer * dirY;

@@ -1,5 +1,6 @@
 ﻿using EntityComponentSystem;
 using System;
+using System.Linq;
 using static AsteroidsEngine.AsteroidsGameSettings;
 
 namespace AsteroidsEngine.Components
@@ -31,6 +32,7 @@ namespace AsteroidsEngine.Components
         Position position;
         Speed speed;
         CircleCollider circleCollider;
+        CircleColliderProvider provider;
 
         /// <summary>
         /// Время окончания перезарядки лазера
@@ -59,6 +61,7 @@ namespace AsteroidsEngine.Components
             position = gameObject.GetComponent<Position>();
             speed = gameObject.GetComponent<Speed>();
             circleCollider = gameObject.GetComponent<CircleCollider>();
+            provider = scene.FindComponentsByType<CircleColliderProvider>().FirstOrDefault();
             settings = (scene as AsteroidsGameScene).settings;
 
             circleCollider.Radius = settings.PlayerColliderRadius;
@@ -88,9 +91,25 @@ namespace AsteroidsEngine.Components
                 }
                 else
                 {
-                    //TODO
                     //laser logic
-                    //foreach (var asteroid in (scene as IAsteroidsEngine).Asteroids)
+                    var (dirX, dirY) = AngleHelper.DegreesToDirection(Rotation);
+
+                    if (provider.RaycastAll(
+                        X + dirX * settings.BulletSpawnDistanceFromPlayer, 
+                        Y + dirY * settings.BulletSpawnDistanceFromPlayer, 
+                        dirX,
+                        dirY, 
+                        new CollisionLayers[] {
+                            CollisionLayers.Asteroid,
+                            CollisionLayers.UFO
+                        },
+                        settings.LaserWidth, 
+                        settings.LaserDistance, 
+                        out var result))
+                    {
+                        foreach (var collider in result)
+                            collider.Destroy();
+                    }
                 }
             }
 

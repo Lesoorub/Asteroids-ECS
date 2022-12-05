@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
         view.SetPlayerInfo(player.X, player.Y, player.SpeedX, player.SpeedY);
         view.SetLaserReload(player.LaserChargeReload, settings.LaserChargeReloadTime);
         view.SetIsInvincibility(player.IsInvincibility);
+        view.SetLaserState(player.LaserIsShooting);
     }
 
     public void PlayerSpawn(IPlayer player, AsteroidsGameSettings Settings)
@@ -28,6 +29,8 @@ public class PlayerController : MonoBehaviour
 
         this.player = player;
         this.settings = Settings;
+
+        view.SetLaserSize(settings.BulletSpawnDistanceFromPlayer, 0, settings.LaserWidth, settings.LaserDistance);
 
         if (this.player == null) return;
         this.player.OnLiveConsumed += Player_OnLiveConsumed;
