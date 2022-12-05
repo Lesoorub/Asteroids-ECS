@@ -54,6 +54,7 @@ namespace AsteroidsEngine.Components
                     scene.AddScore(settings.AddScoreByDestroySmallAsteroid);
                     break;
             }
+            Destroy();
         }
 
         public override void Tick()

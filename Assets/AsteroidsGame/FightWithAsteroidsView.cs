@@ -18,6 +18,7 @@ public class FightWithAsteroidsView : MonoBehaviour
     public UnityEvent OnEndGame;
     public UnityEvent OnStartGame;
     public LivesController LivesController;
+    public PlayerController playerController;
 
     [Header("Prefabs")]
     public GameObject BulletPrefab;
@@ -27,6 +28,14 @@ public class FightWithAsteroidsView : MonoBehaviour
     Dictionary<IBullet, GameObject> Bullets = new Dictionary<IBullet, GameObject>();
     Dictionary<IUFO, GameObject> UFOs = new Dictionary<IUFO, GameObject>();
 
+    //new
+
+    public void SetPlayer(IPlayer player)
+    {
+        playerController.SetPlayer(player);
+    }
+
+    //old
     public void DestroyPlayer()
     {
         Player.SetActive(false);

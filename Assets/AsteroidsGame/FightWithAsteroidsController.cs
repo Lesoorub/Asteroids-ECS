@@ -49,6 +49,10 @@ public class FightWithAsteroidsController : MonoBehaviour
 
         view.OnStartGame?.Invoke();
 
+        //new
+        view.SetPlayer(model.Player);
+        //
+
         model.Bullets.OnAdded += Bullets_OnAdded;
         model.Bullets.OnRemoved += Bullets_OnRemoved;
 
