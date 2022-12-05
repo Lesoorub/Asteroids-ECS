@@ -58,7 +58,7 @@ public class PlayerView : MonoBehaviour
     {
         if (_chargeReloadTimeLerp < reloadTime)
             _chargeReloadTimeLerp = reloadTime;
-        //Было применено сглаживание, для улучшения отображения при малок количестве тиков игры
+        //Было применено сглаживание, для улучшения отображения при малом количестве тиков игры
         _chargeReloadTimeLerp = Mathf.Lerp(_chargeReloadTimeLerp, reloadTime, Time.deltaTime);
         InfoController.SetLaserReload(_chargeReloadTimeLerp, maxReloadTime);
     }
