@@ -58,6 +58,8 @@ public class FightWithAsteroidsModel : MonoBehaviour
             BigAsteroidColliderRadius = 0.4f,
             SmallAsteroidColliderRadius = 0.2f,
 
+            LaserWidth = 0.05f,
+
             UFOSpawnChance = 0.05f,
             Borders = new AsteroidsGameSettings.Border()
             {

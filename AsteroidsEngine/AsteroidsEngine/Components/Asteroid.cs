@@ -60,6 +60,7 @@ namespace AsteroidsEngine.Components
 
         private void Collider_OnCollision(CircleCollider anotherCollider)
         {
+            //Уничтожаем астероид при столкновении
             Destroy();
         }
         

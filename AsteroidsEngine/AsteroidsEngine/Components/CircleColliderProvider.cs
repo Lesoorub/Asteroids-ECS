@@ -57,11 +57,12 @@ namespace AsteroidsEngine.Components
                 {
                     var deltaX = collider.X - x;
                     var deltaY = collider.Y - y;
+
                     var (projectX, projectY) = VectorHelper.Project(deltaX, deltaY, dirX, dirY);
 
+                    //Проверка на дальность
                     float distanceToProjectionSqr = VectorHelper.MagnitudeSqr(projectX, projectY);
-
-                    if (distanceToProjectionSqr > distanceSqr)//Проверка на дальность
+                    if (distanceToProjectionSqr > distanceSqr)
                         continue;
 
                     //Проверка на то что объект находится по направлению луча, а не позади
@@ -73,6 +74,7 @@ namespace AsteroidsEngine.Components
                         sumDistance + epsilon >= distanceSqr)
                         continue;
 
+                    //Рассчет дистанции от точки проекции до объекта
                     var distanceSqrFromProjectionToCollider = VectorHelper.DistanceSqr(projectX, projectY, deltaX, deltaY);
                     if (distanceSqrFromProjectionToCollider > width + collider.Radius)
                         continue;
