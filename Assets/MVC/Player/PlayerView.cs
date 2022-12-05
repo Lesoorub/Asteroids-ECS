@@ -8,6 +8,8 @@ public class PlayerView : MonoBehaviour
     [SerializeField]
     GameObject Player;
     [SerializeField]
+    LineRenderer PlayerVisualizer;
+    [SerializeField]
     GameObject Laser;
     [SerializeField]
     ParticleSystem DestroyEffect;
@@ -15,6 +17,7 @@ public class PlayerView : MonoBehaviour
     [SerializeField]
     InfoController InfoController;
 
+    public float IsInvincibilityFrenq = 4;
     float _chargeReloadTimeLerp;
 
     public void SetLives(int count)
@@ -62,5 +65,17 @@ public class PlayerView : MonoBehaviour
     public void SetPlayerInfo(float x, float y, float speedX, float speedY)
     {
         InfoController.SetPlayerInfo(x, y, speedX, speedY);
+    }
+    public void SetIsInvincibility(bool isInvincibility)
+    {
+        if (isInvincibility)
+        {
+            float IsInvincibilityFrenqTime = 1f / IsInvincibilityFrenq;
+            PlayerVisualizer.enabled = Time.time % IsInvincibilityFrenqTime > (IsInvincibilityFrenqTime / 2);
+        }
+        else if (!PlayerVisualizer.enabled)
+        {
+            PlayerVisualizer.enabled = true;
+        }
     }
 }

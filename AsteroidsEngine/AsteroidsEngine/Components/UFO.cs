@@ -1,6 +1,7 @@
 ﻿using AsteroidsEngine;
 using EntityComponentSystem;
 using System;
+using System.Runtime;
 
 namespace AsteroidsEngine.Components
 {
@@ -24,8 +25,18 @@ namespace AsteroidsEngine.Components
             var ast_scene = (scene as AsteroidsGameScene);
             position = gameObject.GetComponent<Position>();
             speed = gameObject.GetComponent<Speed>();
+            var collider = gameObject.GetComponent<CircleCollider>();
+            var settings = (scene as AsteroidsGameScene).settings;
+
+            collider.Radius = settings.UFOColliderRadius;
+            collider.OnCollision += Collider_OnCollision;
             target = ast_scene.Player;
             maxSpeed = ast_scene.settings.UFOSpeed;
+        }
+
+        private void Collider_OnCollision(CircleCollider anotherCollider)
+        {
+            Destroy();
         }
 
         public override void Tick()
@@ -42,7 +53,6 @@ namespace AsteroidsEngine.Components
                 speed.SpeedX = dirX * maxSpeed;
                 speed.SpeedY = dirY * maxSpeed;
             }
-
         }
 
         public override void OnDestroyed()

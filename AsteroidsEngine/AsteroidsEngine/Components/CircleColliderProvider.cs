@@ -21,7 +21,7 @@ namespace AsteroidsEngine.Components
             /*Bullet   */{ false,  false, false, true,    true  },
             /*Player   */{ false,  false, false, true,    true  },
             /*Asteroid */{ false,  false, false, false,   false },
-            /*UFO      */{ false,  false, false, false,   false }
+            /*UFO      */{ false,  false, true,  false,   false }
         };
 
         /// <summary>

@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
         view.SetPlayerTransform(player.X, player.Y, player.Rotation);
         view.SetPlayerInfo(player.X, player.Y, player.SpeedX, player.SpeedY);
         view.SetLaserReload(player.LaserChargeReload, settings.LaserChargeReloadTime);
+        view.SetIsInvincibility(player.IsInvincibility);
     }
 
     public void PlayerSpawn(IPlayer player, AsteroidsGameSettings Settings)

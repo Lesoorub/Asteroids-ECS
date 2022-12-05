@@ -24,6 +24,7 @@ namespace AsteroidsEngine.Components
             speed = gameObject.GetComponent<Speed>();
             settings = (scene as AsteroidsGameScene).settings;
             var collider = gameObject.GetComponent<CircleCollider>();
+
             collider.OnCollision += Collider_OnCollision;
 
             var (dirX, dirY) = GetRandomDirectory();
@@ -32,9 +33,11 @@ namespace AsteroidsEngine.Components
             {
                 case AsteroidSize.Big:
                     magnitude = settings.BigAsteroidSpeed;
+                    collider.Radius = settings.BigAsteroidColliderRadius;
                     break;
                 case AsteroidSize.Small:
                     magnitude = settings.SmallAsteroidSpeed;
+                    collider.Radius = settings.SmallAsteroidColliderRadius;
                     break;
             }
             speed.SpeedX = dirX * magnitude;
@@ -70,12 +73,14 @@ namespace AsteroidsEngine.Components
                 asteroidComponent.Size = AsteroidSize.Small;
 
             };
+            Random rnd = new Random();
+            float offsetAngle = (float)rnd.NextDouble();
             for (int k = 0; k < settings.SpawnChunksOnBigAsteroidHasDestroyed; k++)
             {
                 var asteroid = scene.Instantiate(asteroidPrefab);
 
                 var speedComponent = asteroid.GetComponent<Speed>();
-                float angle = ((float)k / settings.SpawnChunksOnBigAsteroidHasDestroyed) * (float)Math.PI * 2;
+                float angle = ((float)k / settings.SpawnChunksOnBigAsteroidHasDestroyed + offsetAngle) * (float)Math.PI * 2;
                 speedComponent.SpeedX = (float)Math.Sin(angle) * settings.SmallAsteroidSpeed;
                 speedComponent.SpeedY = (float)Math.Cos(angle) * settings.SmallAsteroidSpeed;
 

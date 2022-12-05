@@ -25,6 +25,7 @@ namespace AsteroidsEngine.Components
             speed = gameObject.GetComponent<Speed>();
             settings = (scene as AsteroidsGameScene).settings;
             var circleCollider = gameObject.GetComponent<CircleCollider>();
+            circleCollider.Radius = settings.BulletColliderRadius;
             circleCollider.OnCollision += CircleCollider_OnCollision;
             destroyTime = time.ElapsedTimeSinceTheStartOfTheScene + settings.BulletLifetime;
         }

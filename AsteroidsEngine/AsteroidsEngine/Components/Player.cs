@@ -61,6 +61,7 @@ namespace AsteroidsEngine.Components
             circleCollider = gameObject.GetComponent<CircleCollider>();
             settings = (scene as AsteroidsGameScene).settings;
 
+            circleCollider.Radius = settings.PlayerColliderRadius;
             circleCollider.OnCollision += CircleCollider_OnCollision;
 
             speed.Drag = settings.PlayerDrag;

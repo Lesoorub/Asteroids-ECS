@@ -47,6 +47,18 @@ public class FightWithAsteroidsModel : MonoBehaviour
         {
             BulletSpeed = 10,
             BulletReload = 0.4f,
+            BulletColliderRadius = 0.05f,
+
+            PlayerColliderRadius = 0.3f,
+
+            UFOColliderRadius = 0.5f,
+
+            BigAsteroidSpeed = 2f,
+            SmallAsteroidSpeed = 3f,
+            BigAsteroidColliderRadius = 0.4f,
+            SmallAsteroidColliderRadius = 0.2f,
+
+            UFOSpawnChance = 0.05f,
             Borders = new AsteroidsGameSettings.Border()
             {
                 Left = -halfScreenInWorldPoint.x - offset,

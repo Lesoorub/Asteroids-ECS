@@ -50,6 +50,10 @@
         /// Длительность неуязвимости игрока в секундах
         /// </summary>
         public float InvincibilityTime = 1;
+        /// <summary>
+        /// Радиус коллайдера игрока
+        /// </summary>
+        public float PlayerColliderRadius = 0.5f;
 
         // UFO
         /// <summary>
@@ -60,6 +64,12 @@
         /// Шанс спавна НЛо
         /// </summary>
         public float UFOSpawnChance = 0.05f;
+        /// <summary>
+        /// Радиус коллайдера НЛО
+        /// </summary>
+        public float UFOColliderRadius = 0.5f;
+
+
         // Asteroid
         /// <summary>
         /// Скорость большого астероида
@@ -73,6 +83,15 @@
         /// Количество создаваемых осколков астероида при его уничтожении
         /// </summary>
         public int SpawnChunksOnBigAsteroidHasDestroyed = 3;
+        /// <summary>
+        /// Радиус коллайдера малого астероида
+        /// </summary>
+        public float SmallAsteroidColliderRadius = 0.5f;
+        /// <summary>
+        /// Радиус коллайдера большого астероида
+        /// </summary>
+        public float BigAsteroidColliderRadius = 0.5f;
+
         //Bullet
         /// <summary>
         /// Расстояние спавна пули от игрока
@@ -90,6 +109,11 @@
         /// Длительность жизни пули в секундах
         /// </summary>
         public float BulletLifetime = 3;
+        /// <summary>
+        /// Радиус коллайдера пули
+        /// </summary>
+        public float BulletColliderRadius = 0.5f;
+
         /// <summary>
         /// Границы мира, в пределах которых должны быть зациклены все игровые объекты
         /// </summary>
