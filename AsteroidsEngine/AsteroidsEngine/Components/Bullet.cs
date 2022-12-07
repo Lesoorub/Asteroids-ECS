@@ -1,5 +1,4 @@
 ﻿using EntityComponentSystem;
-using System.Net.Http.Headers;
 
 namespace AsteroidsEngine.Components
 {

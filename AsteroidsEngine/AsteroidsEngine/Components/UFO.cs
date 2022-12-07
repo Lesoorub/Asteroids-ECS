@@ -1,7 +1,5 @@
-﻿using AsteroidsEngine;
-using EntityComponentSystem;
+﻿using EntityComponentSystem;
 using System;
-using System.Runtime;
 
 namespace AsteroidsEngine.Components
 {

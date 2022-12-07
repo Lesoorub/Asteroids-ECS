@@ -63,7 +63,7 @@ namespace AsteroidsEngine.Components
             //Уничтожаем астероид при столкновении
             Destroy();
         }
-        
+
         public override void Tick()
         {
             settings.Borders.CorrectPosition(ref position.X, ref position.Y);

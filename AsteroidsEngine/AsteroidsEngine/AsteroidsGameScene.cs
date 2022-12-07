@@ -1,6 +1,5 @@
 ﻿using AsteroidsEngine.Components;
 using EntityComponentSystem;
-using SimpleLogger;
 
 namespace AsteroidsEngine
 {

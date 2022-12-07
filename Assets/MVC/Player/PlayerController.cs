@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public PlayerModel model;
     public PlayerView view;
 
     IPlayer player;

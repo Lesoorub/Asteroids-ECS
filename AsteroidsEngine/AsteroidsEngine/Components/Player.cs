@@ -54,7 +54,7 @@ namespace AsteroidsEngine.Components
 
         Border border;
         AsteroidsGameSettings settings;
-        
+
         //Перегрузки методов
         public override void OnAwake()
         {
@@ -95,16 +95,16 @@ namespace AsteroidsEngine.Components
                     var (dirX, dirY) = AngleHelper.DegreesToDirection(Rotation);
 
                     if (provider.RaycastAll(
-                        X + dirX * settings.BulletSpawnDistanceFromPlayer, 
-                        Y + dirY * settings.BulletSpawnDistanceFromPlayer, 
+                        X + dirX * settings.BulletSpawnDistanceFromPlayer,
+                        Y + dirY * settings.BulletSpawnDistanceFromPlayer,
                         dirX,
-                        dirY, 
+                        dirY,
                         new CollisionLayers[] {
                             CollisionLayers.Asteroid,
                             CollisionLayers.UFO
                         },
-                        settings.LaserWidth, 
-                        settings.LaserDistance, 
+                        settings.LaserWidth,
+                        settings.LaserDistance,
                         out var result))
                     {
                         foreach (var collider in result)
@@ -176,7 +176,7 @@ namespace AsteroidsEngine.Components
                     settings.BulletSpawnDistanceFromPlayer);
             }
         }
-        
+
         public void ShootLaser()
         {
             if (LaserCharges <= 0) return;

@@ -5,7 +5,6 @@ using UnityEngine;
 public class InfoController : MonoBehaviour
 {
     public InfoView view;
-    public InfoModel model;
 
     public void SetScore(int score)
     {

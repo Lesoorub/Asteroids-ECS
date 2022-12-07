@@ -1,6 +1,5 @@
 ﻿using EntityComponentSystem;
 using System.Collections.Generic;
-using System.Net;
 
 namespace AsteroidsEngine.Components
 {
@@ -32,10 +31,10 @@ namespace AsteroidsEngine.Components
             new Dictionary<CollisionLayers, List<CircleCollider>>();
 
         public bool RaycastAll(
-            float x, float y, 
-            float dirX, float dirY, 
-            CollisionLayers layer, 
-            float width, float distance, 
+            float x, float y,
+            float dirX, float dirY,
+            CollisionLayers layer,
+            float width, float distance,
             out List<CircleCollider> result)
         {
             return RaycastAll(x, y, dirX, dirY, new CollisionLayers[] { layer }, width, distance, out result);
@@ -78,7 +77,7 @@ namespace AsteroidsEngine.Components
                     var distanceSqrFromProjectionToCollider = VectorHelper.DistanceSqr(projectX, projectY, deltaX, deltaY);
                     if (distanceSqrFromProjectionToCollider > width + collider.Radius)
                         continue;
-                    
+
                     result.Add(collider);
                 }
             }
